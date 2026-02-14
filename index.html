@@ -1,0 +1,85 @@
+index.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Surat Pernyataan Keanggotaan</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+  background: #f3f4f6;
+  font-family: "Times New Roman", serif;
+}
+.surat{
+  background: white;
+  border: 2px solid black;
+}
+</style>
+</head>
+
+<body class="flex flex-col items-center p-6">
+
+<h1 class="text-2xl font-bold mb-4">Form Pendaftaran Orang Kuat 💪</h1>
+
+<div class="mb-6">
+  <input id="nama" type="text" placeholder="Masukkan nama"
+    class="border p-2 rounded"/>
+  <button onclick="buatSurat()"
+    class="bg-blue-600 text-white px-4 py-2 rounded ml-2">
+    Buat Surat
+  </button>
+</div>
+
+<!-- Surat -->
+<div id="surat" class="surat w-full max-w-xl p-8 hidden">
+
+  <h2 class="text-center font-bold text-lg underline mb-4">
+    SURAT PERNYATAAN KEANGGOTAAN
+  </h2>
+
+  <p class="mb-4">Yang bertanda tangan di bawah ini:</p>
+
+  <p class="mb-2"><b>Nama :</b> <span id="namaSurat"></span></p>
+
+  <p class="mb-4 text-justify">
+    Dengan ini menyatakan bahwa saya telah resmi terdaftar sebagai anggota
+    komunitas <b>Orang GAY Nasional</b> dan siap menjaga semangat,
+    kesehatan, kekuatan fisik, serta mental yang tangguh.
+  </p>
+
+  <p id="pesanSpesial" class="font-bold text-center text-lg my-4"></p>
+
+  <div class="text-right mt-8">
+    <p>Disahkan hari ini,</p>
+    <p class="mt-12 underline">Tanda Tangan</p>
+  </div>
+
+</div>
+
+<script>
+function buatSurat(){
+  const nama = document.getElementById("nama").value.trim();
+
+  if(!nama){
+    alert("Masukkan nama dulu!");
+    return;
+  }
+
+  document.getElementById("surat").classList.remove("hidden");
+  document.getElementById("namaSurat").innerText = nama;
+
+  const pesan = document.getElementById("pesanSpesial");
+
+  if(nama.toLowerCase() === "nita"){
+    pesan.innerHTML = "🔥 SELAMAT! ANDA DINYATAKAN SEBAGAI MEMBER GAY TERKUAT & TERPANAS 🔥";
+  } else {
+    pesan.innerHTML = "💪 Selamat! Anda resmi menjadi bagian dari Orang Gay 💪";
+  }
+}
+</script>
+
+</body>
+</html>
